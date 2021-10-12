@@ -24,7 +24,7 @@ Enter a guess between ${game.smallestNum} and ${game.biggestNum}`))
     this.render(this.value)
   },
   render: function(number) {
-    while(this.value >= 1 && this.value <= 100 && this.value)
+    while(this.value >= 1 && this.value <= 100 && this.value !==this.secretNum) {
       if (this.value > this.secretNum) {
         console.log('wrong')
         this.prevGuesses.push(this.value)
@@ -35,11 +35,14 @@ Previous Guesses: ${this.prevGuesses.join(" - ")}`))
         this.prevGuesses.push(this.value)
         this.value = parseInt(prompt (`Incorrect! Guess again with a higher number!
 Previous Guesses: ${this.prevGuesses.join(" - ")}`))
-      } else if (this.value === this.secretNum) {
+      } if (this.value === this.secretNum) {
         console.log('correct')
         this.prevGuesses.push(this.value)
         alert (`You win! Congratulations!
-You guessed the secret number, ${this.value} in ${this.prevGuesses.length} guesses!`)
-      }   
+You guessed the secret number, ${this.value} in ${this.prevGuesses.length} guesses, ${this.prevGuesses}!`)
+        this.prevGuesses = []
+        console.log(this.prevGuesses)
+      }  
+    }
   }
 }
