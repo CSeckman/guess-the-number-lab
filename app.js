@@ -17,49 +17,29 @@ const game = {
     return this.value
   },
   getPlayerGuess: function() {
-    let playerGuess = parseInt(prompt(`Enter a guess between ${game.smallestNum} and ${game.biggestNum}`))
+    playerGuess = parseInt(prompt(`Play Guess the Number
+Enter a guess between ${game.smallestNum} and ${game.biggestNum}`))
     console.log(playerGuess)
     this.value = playerGuess
     this.render(this.value)
-    },
+  },
   render: function(number) {
-    if (this.value !== this.secretNum) {
-      console.log('wrong')
-      this.prevGuesses.push(this.value)
-      console.log(this.prevGuesses.join(" - "))
-    } else console.log('correct')
+    while(this.value >= 1 && this.value <= 100 && this.value)
+      if (this.value > this.secretNum) {
+        console.log('wrong')
+        this.prevGuesses.push(this.value)
+        this.value = parseInt(prompt (`Incorrect! Guess again with a lower number!
+Previous Guesses: ${this.prevGuesses.join(" - ")}`))
+      } else if (this.value < this.secretNum) { 
+        console.log('wrong')
+        this.prevGuesses.push(this.value)
+        this.value = parseInt(prompt (`Incorrect! Guess again with a higher number!
+Previous Guesses: ${this.prevGuesses.join(" - ")}`))
+      } else if (this.value === this.secretNum) {
+        console.log('correct')
+        this.prevGuesses.push(this.value)
+        alert (`You win! Congratulations!
+You guessed the secret number, ${this.value} in ${this.prevGuesses.length} guesses!`)
+      }   
   }
 }
-
-// function keepGuessing(number) {
-//   while(parseGuess.parsed>=game.smallestNum && parseGuess.parsed<=game.biggestNum)
-// }
-
-// }
-// evalPlayerGuess = function()
-
-
-// render: function() {
-//   let guess = game.play
-//   if (guess < game.secretNum) {
-//     console.log(`${guess} is too low, guess a higher number`)
-//     alert(`${guess} is too low, guess a higher number`)
-//   } else if (guess > game.secretNum) {
-//     console.log(`${guess} is too high, guess a lower number`)
-//     alert(`${guess} is too high, guess a lower number`)
-//   } else if (guess === game.secretNum) {
-//     console.log("winner")
-//     alert(`You win! ${guess} is the secret number! Congrats!`)
-//   }
-// }
-
-// function pushPrevGuesses (number) {
-//   prevGuesses.push(parsed)
-//   let prevGuesses = parsed.join(" - ")
-//   console.log(prevGuesses)
-// function pushPrevGuesses (number) {
-// prevGuesses.push(parsed)
-// let prevGuesses = parsed.join(" - ")
-// }
-
-// while(playerGuess>=this.smallestNum && playerGuess<=this.biggestNum) {
