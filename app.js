@@ -46,3 +46,5 @@ You guessed the secret number, ${this.value} in ${this.prevGuesses.length} guess
     }
   }
 }
+
+game.play()
